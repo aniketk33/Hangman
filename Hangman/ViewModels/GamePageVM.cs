@@ -58,7 +58,7 @@ namespace Hangman.ViewModels
         public Color LeftLeg { get => leftLeg; set => SetProperty(ref leftLeg, value); }
         public Color RightLeg { get => rightLeg; set => SetProperty(ref rightLeg, value); }
         public double TranslateTo { get => translateTo; set => SetProperty(ref translateTo, value); }
-
+        public string Username { get; set; }
         //animation
 
         #endregion
@@ -89,8 +89,9 @@ namespace Hangman.ViewModels
         });
         #endregion
 
-        public GamePageVM()
+        public GamePageVM(string username)
         {
+            Username = username;
             Initializevariables();
             GetJsonData();
             GetAlphabetList();

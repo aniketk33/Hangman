@@ -1,5 +1,7 @@
 ﻿using System;
+using Hangman.Utilities;
 using Hangman.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +12,15 @@ namespace Hangman
         public App()
         {
             InitializeComponent();
-            MainPage = new GamePage();
+            var username = Preferences.Get(PreferenceKeys.UserName, "");
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MainPage = new HomePage();
+            }
+            else
+            {
+                MainPage = new GamePage(username);
+            }
         }
 
         protected override void OnStart()

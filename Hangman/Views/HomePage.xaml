@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Hangman.Views.HomePage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,50,40" BackgroundColor="#092850" Padding="15,0"
+              RowSpacing="25">
+
+            <AbsoluteLayout HorizontalOptions="CenterAndExpand" Padding="0,60">
+
+                <!--rod supporting the rope-->
+                <BoxView BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="90,0,80,10"/>
+
+                <!--rope-->
+                <BoxView BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="170,0,10,40"/>
+
+                <!--head-->
+                <Ellipse x:Name="head" Stroke="#d7dbf5" StrokeThickness="8" HeightRequest="70" WidthRequest="70"
+                         AbsoluteLayout.LayoutBounds="1.27,0.13" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                <!--body-->
+                <BoxView x:Name="body" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="170,100,10,100"/>
+
+                <!--hands-->
+                <BoxView x:Name="leftHand" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.90,0.45,10,50"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="45"/>
+
+                <BoxView x:Name="rightHand" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="1.1,0.45,10,50"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="-45"/>
+
+                <!--legs-->
+                <BoxView x:Name="leftLeg" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.90,0.7,10,50"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="45"/>
+
+                <BoxView x:Name="rightLeg" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="1.1,0.7,10,50"
+                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="-45"/>
+
+                <!--main pole-->
+                <BoxView BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.5,1,10,320"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                <!--base support-->
+                <BoxView BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.5,1,100,10"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            </AbsoluteLayout>
+
+            <Frame x:Name="entryFrame" Grid.Row="1" Padding="2">
+                <Entry x:Name="userNameEntry" Placeholder="YOUR NAME" HorizontalTextAlignment="Center"
+                       TextColor="#092850" FontAttributes="Bold" TextChanged="userNameEntry_TextChanged"/>
+            </Frame>
+
+
+            <Button Grid.Row="2" Text="PROCEED" BackgroundColor="AliceBlue" BorderColor="#092850"
+                    TextColor="#092850" FontAttributes="Bold" FontSize="18" CornerRadius="5"
+                    Clicked="Button_Clicked"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

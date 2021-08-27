@@ -12,7 +12,8 @@
     <ContentPage.Content>
         <Grid RowDefinitions="70,*" Padding="15,0" BackgroundColor="AliceBlue">
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Label Text="WELCOME TO HANGMAN" HorizontalTextAlignment="Center" FontSize="Large"
+                <Label Text="{Binding Username, StringFormat='Welcome to Hangman, {0}',Converter={xct:TextCaseConverter Type=FirstUpperRestLower}}"
+                       HorizontalTextAlignment="Center" FontSize="Large"
                        TextColor="#092850" FontAttributes="Bold"/>
             </StackLayout>
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">

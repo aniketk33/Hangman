@@ -5,6 +5,7 @@
     xmlns:model="clr-namespace:Hangman.Model"
     xmlns:viewmodel="clr-namespace:Hangman.ViewModels"
     x:DataType="viewmodel:GamePageVM"
+    xmlns:hangman="clr-namespace:Hangman.Views"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="this"
     x:Class="Hangman.Views.GamePage">
@@ -14,11 +15,19 @@
                 <Label Text="WELCOME TO HANGMAN" HorizontalTextAlignment="Center" FontSize="Large"
                        TextColor="#092850" FontAttributes="Bold"/>
             </StackLayout>
-            <ScrollView Grid.Row="1">
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
 
                 <StackLayout Spacing="25">
 
-                    <Label Text="{Binding AttemptsLeft,StringFormat='You have {0} attempts left.'}"/>
+                    <Button Text="NEXT WORD" FontSize="Large" BackgroundColor="AliceBlue" BorderColor="#092850"
+                            TextColor="#092850" BorderWidth="1" IsVisible="{Binding NextButtonVisibility}"
+                            Command="{Binding RefreshWordCommand}" CornerRadius="5" VerticalOptions="EndAndExpand"
+                            Margin="0,5"/>
+
+                    <Label Text="YAYYY!!. You have saved the guy." IsVisible="{Binding WordGuessed}" TextColor="#70cf8a"
+                           FontAttributes="Bold"/>
+
+                    <hangman:HangmanTemplate/>
 
                     <StackLayout>
                                                 
@@ -43,12 +52,7 @@
                             </BindableLayout.ItemTemplate>
                         </FlexLayout>
 
-                    </StackLayout>
-
-                    <Button Text="NEXT WORD" FontSize="Large" BackgroundColor="AliceBlue" BorderColor="#092850"
-                            TextColor="#092850" BorderWidth="1" IsVisible="{Binding NextButtonVisibility}"
-                            Command="{Binding RefreshWordCommand}" CornerRadius="5" VerticalOptions="EndAndExpand"
-                            Margin="0,10"/>
+                    </StackLayout>                   
 
                 </StackLayout>
 

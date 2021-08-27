@@ -74,7 +74,10 @@ namespace Hangman.ViewModels
             _selectedAlphabets.Add(data.Alphabet);
             ReplaceWithSelectedAlphabets(data.Alphabet.ToLower());
             if (_colorHangman >= 10 && !WordGuessed)
+            {
+                CurrentWord = WordToBeGuessed;
                 NextButtonVisibility = true;
+            }
         });
 
         public Command RefreshWordCommand => new(() =>
@@ -147,7 +150,7 @@ namespace Hangman.ViewModels
 
         private void GetTheWordToBeGuessed()
         {
-        randomWord:
+            randomWord:
             var randIndex = new Random().Next(WordList.Count);
             WordToBeGuessed = WordList[randIndex];
             CurrentWord = "";
@@ -155,10 +158,17 @@ namespace Hangman.ViewModels
             if (WordToBeGuessed.Length > 8 || _selectedWords.Contains(WordToBeGuessed))
                 goto randomWord;
 
+            var randomIndexSet = NumberOfTextToBeFilled(WordToBeGuessed.Length);
+
             _selectedWords.Add(WordToBeGuessed);
             for (int i = 0; i < WordToBeGuessed.Length; i++)
             {
-                CurrentWord += "__ ";
+                var missingWord = "__" + " ";
+                if (randomIndexSet.Contains(i))
+                {
+                    missingWord = WordToBeGuessed[i] + " ";
+                }
+                CurrentWord += missingWord;
             }
             CurrentWord = CurrentWord.TrimEnd();
         }
@@ -208,7 +218,6 @@ namespace Hangman.ViewModels
             SuccessHangmanColor();
             NextButtonVisibility = true;
             WordGuessed = true;
-
         }
 
         private void ColorHangman(int count)
@@ -270,6 +279,28 @@ namespace Hangman.ViewModels
             RightHand = Color.FromHex("#70cf8a");
             LeftLeg = Color.FromHex("#70cf8a");
             RightLeg = Color.FromHex("#70cf8a");
+        }
+
+        private HashSet<int> NumberOfTextToBeFilled(int textLength)
+        {
+            var hashset = new HashSet<int>();
+            if (textLength <= 4)
+            {
+                hashset.Add(new Random().Next(3));
+            }
+            else if (textLength <= 5 && textLength <= 6)
+            {
+                hashset.Add(new Random().Next(1, 3));
+                hashset.Add(new Random().Next(4, textLength));
+            }
+            else if (textLength <= 7 && textLength <= 8)
+            {
+                hashset.Add(new Random().Next(1, 3));
+                hashset.Add(new Random().Next(4, 6));
+                hashset.Add(new Random().Next(6, textLength));
+            }
+
+            return hashset;
         }
 
         #endregion

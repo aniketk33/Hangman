@@ -80,7 +80,7 @@ namespace Hangman.ViewModels
             if (_colorHangman >= 10 && !WordGuessed)
             {
                 DisplayMessage = true;
-                Message = "You were not able to save the guy :(";
+                Message = "His ghost will haunt you now xD";
                 MessageColor = Color.FromHex("#b52f2f");
                 CurrentWord = WordToBeGuessed;
                 NextButtonVisibility = true;

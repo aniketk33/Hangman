@@ -25,7 +25,7 @@
                             Command="{Binding RefreshWordCommand}" CornerRadius="5" VerticalOptions="EndAndExpand"
                             Margin="0,5"/>
 
-                    <Label Text="YAYYY!!. You have saved the guy." IsVisible="{Binding WordGuessed}" TextColor="#70cf8a"
+                    <Label Text="{Binding Message}" IsVisible="{Binding DisplayMessage}" TextColor="{Binding MessageColor}"
                            FontAttributes="Bold"/>
 
                     <hangman:HangmanTemplate/>

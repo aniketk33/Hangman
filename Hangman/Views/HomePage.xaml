@@ -56,7 +56,8 @@
 
             <Frame x:Name="entryFrame" Grid.Row="1" Padding="2">
                 <Entry x:Name="userNameEntry" Placeholder="YOUR NAME" HorizontalTextAlignment="Center"
-                       TextColor="#092850" FontAttributes="Bold" TextChanged="userNameEntry_TextChanged"/>
+                       TextColor="#092850" FontAttributes="Bold" TextChanged="userNameEntry_TextChanged"
+                       ReturnType="Next"/>
             </Frame>
 
 

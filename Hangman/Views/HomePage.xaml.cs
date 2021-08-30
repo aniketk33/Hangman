@@ -54,8 +54,11 @@ namespace Hangman.Views
             });
         }
 
-        void userNameEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void userNameEntry_TextChanged(Object sender, TextChangedEventArgs e)
         {
+            if (entryFrame.BackgroundColor == Color.Transparent)
+                return;
+
             entryFrame.BackgroundColor = Color.Transparent;
         }
     }

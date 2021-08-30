@@ -9,11 +9,11 @@ namespace Hangman.Views
 {
     public partial class GamePage : ContentPage
     {
-        public GamePage()
+        public GamePage(string username)
         {
             InitializeComponent();
             On<iOS>().SetUseSafeArea(true);
-            BindingContext = new GamePageVM();
+            BindingContext = new GamePageVM(username);
         }
     }
 }

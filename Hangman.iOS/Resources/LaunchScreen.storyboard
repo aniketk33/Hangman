@@ -11,15 +11,17 @@
         <scene sceneID="gAE-YM-kbH">
             <objects>
                 <viewController id="X5k-f2-b5h" sceneMemberID="viewController">
-                    <activityIndicatorView key="view" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="pUB-yQ-P30">
+                    <imageView key="view" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen" id="Lga-Yj-7kS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.066188924009999997" green="0.17646813389999999" blue="0.36111858489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </activityIndicatorView>
+                    </imageView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="349" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splashscreen" width="149" height="219.5"/>
+    </resources>
 </document>

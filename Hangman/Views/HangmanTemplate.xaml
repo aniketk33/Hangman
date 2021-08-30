@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:viewmodel="clr-namespace:Hangman.ViewModels"
+    x:DataType="viewmodel:GamePageVM"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Hangman.Views.HangmanTemplate">
+    <ContentView.Content>
+        <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+
+            <!--rod supporting the rope-->
+            <BoxView BackgroundColor="{Binding RodHoldingRope}" AbsoluteLayout.LayoutBounds="90,0,80,10"/>
+
+            <!--rope-->
+            <BoxView BackgroundColor="{Binding Rope}" AbsoluteLayout.LayoutBounds="170,0,10,40"/>
+
+            <!--head-->
+            <Ellipse Stroke="{Binding Head}" StrokeThickness="8" HeightRequest="70" WidthRequest="70"
+                     AbsoluteLayout.LayoutBounds="1.27,0.13" AbsoluteLayout.LayoutFlags="PositionProportional"
+                     TranslationY="{Binding TranslateTo}"/>
+
+            <!--<Label Text="x" AbsoluteLayout.LayoutBounds="0.93,0.15" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <Label Text="x" AbsoluteLayout.LayoutBounds="1.05,0.15" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Label Text="___" AbsoluteLayout.LayoutBounds="1.05,0.2" AbsoluteLayout.LayoutFlags="PositionProportional"
+                   Rotation="15"/>-->
+
+            <!--body-->
+            <BoxView BackgroundColor="{Binding Body}" AbsoluteLayout.LayoutBounds="170,100,10,100"
+                     TranslationY="{Binding TranslateTo}"/>
+
+            <!--hands-->
+            <BoxView BackgroundColor="{Binding LeftHand}" AbsoluteLayout.LayoutBounds="0.90,0.45,10,50"
+                     AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="45"
+                     TranslationY="{Binding TranslateTo}"/>
+
+            <BoxView BackgroundColor="{Binding RightHand}" AbsoluteLayout.LayoutBounds="1.1,0.45,10,50"
+                     AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="-45"
+                     TranslationY="{Binding TranslateTo}"/>
+
+            <!--legs-->
+            <BoxView BackgroundColor="{Binding LeftLeg}" AbsoluteLayout.LayoutBounds="0.90,0.7,10,50"
+                     AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="45"
+                     TranslationY="{Binding TranslateTo}"/>
+
+            <BoxView BackgroundColor="{Binding RightLeg}" AbsoluteLayout.LayoutBounds="1.1,0.7,10,50"
+                     AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="-45"
+                     TranslationY="{Binding TranslateTo}"/>
+
+            <!--main pole-->
+            <BoxView BackgroundColor="{Binding Pole}" AbsoluteLayout.LayoutBounds="0.5,1,10,320"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <!--base support-->
+            <BoxView BackgroundColor="{Binding PoleBase}" AbsoluteLayout.LayoutBounds="0.5,1,100,10"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

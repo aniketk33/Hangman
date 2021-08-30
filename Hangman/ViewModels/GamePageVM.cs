@@ -227,7 +227,7 @@ namespace Hangman.ViewModels
             NextButtonVisibility = true;
             WordGuessed = true;
             DisplayMessage = true;
-            Message = "YAYYY!!. You have saved the guy.";
+            Message = "YAYYY!!. You saved the guy.";
             MessageColor = Color.FromHex("#70cf8a");
         }
 

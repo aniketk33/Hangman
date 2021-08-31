@@ -18,30 +18,16 @@ namespace Hangman.Views
             ApplyAnimations();
         }
 
-        private void ApplyAnimations()
+        private async void ApplyAnimations()
         {
-            var parentAnimation = new Animation();
-            //forward animation
-            var headAnimationForward = new Animation(v => head.TranslationY = v, 0, 50, Easing.SinInOut);
-            var bodyAnimationForward = new Animation(v => body.TranslationY = v, 0, 50, Easing.SinInOut);
-            var leftHandAnimationForward = new Animation(v => leftHand.TranslationY = v, 0, 50, Easing.SinInOut);
-            var rightHandAnimationForward = new Animation(v => rightHand.TranslationY = v, 0, 50, Easing.SinInOut);
-            var leftLegAnimationForward = new Animation(v => leftLeg.TranslationY = v, 0, 50, Easing.SinInOut);
-            var rightLegAnimationForward = new Animation(v => rightLeg.TranslationY = v, 0, 50, Easing.SinInOut);
-
-            parentAnimation.Add(0, 1, headAnimationForward);
-            parentAnimation.Add(0, 1, bodyAnimationForward);
-            parentAnimation.Add(0, 1, leftHandAnimationForward);
-            parentAnimation.Add(0, 1, rightHandAnimationForward);
-            parentAnimation.Add(0, 1, leftLegAnimationForward);
-            parentAnimation.Add(0, 1, rightLegAnimationForward);
-
-            parentAnimation.Commit(this, "ParentAnimation", 16, 1500, Easing.SinInOut, (v, c) =>
+            while (true)
             {
-            }, () => true);
+                await hangman.TranslateTo(0, 50, 1500, Easing.SinInOut);
+                await hangman.TranslateTo(0, 0, 1500, Easing.SinInOut);
+            }
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
+        void Button_Clicked(Object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userNameEntry.Text))
             {
@@ -68,8 +54,11 @@ namespace Hangman.Views
             });
         }
 
-        void userNameEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void userNameEntry_TextChanged(Object sender, TextChangedEventArgs e)
         {
+            if (entryFrame.BackgroundColor == Color.Transparent)
+                return;
+
             entryFrame.BackgroundColor = Color.Transparent;
         }
     }

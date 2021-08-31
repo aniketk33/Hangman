@@ -37,6 +37,9 @@ namespace Hangman.ViewModels
         private double translateTo = 0;
         private int _colorHangman = 1;
         private bool wordGuessed;
+        private Color messageColor;
+        private string message;
+        private bool displayMessage;
         #endregion
 
         #region Properties
@@ -46,7 +49,7 @@ namespace Hangman.ViewModels
         public string CurrentWord { get => currentWord; set => SetProperty(ref currentWord, value); }
         public bool NextButtonVisibility { get => nextButtonVisibility; set => SetProperty(ref nextButtonVisibility, value); }
         public bool WordGuessed { get => wordGuessed; set => SetProperty(ref wordGuessed, value); }
-        //colors for hangman #70cf8a-> success
+        //colors for hangman
         public Color PoleBase { get => poleBase; set => SetProperty(ref poleBase, value); }
         public Color Pole { get => pole; set => SetProperty(ref pole, value); }
         public Color RodHoldingRope { get => rodHoldingRope; set => SetProperty(ref rodHoldingRope, value); }
@@ -59,8 +62,9 @@ namespace Hangman.ViewModels
         public Color RightLeg { get => rightLeg; set => SetProperty(ref rightLeg, value); }
         public double TranslateTo { get => translateTo; set => SetProperty(ref translateTo, value); }
         public string Username { get; set; }
-        //animation
-
+        public string Message { get => message; set => SetProperty(ref message, value); }
+        public Color MessageColor { get => messageColor; set => SetProperty(ref messageColor, value); }
+        public bool DisplayMessage { get => displayMessage; set => SetProperty(ref displayMessage, value); }
         #endregion
 
         #region Command
@@ -75,6 +79,9 @@ namespace Hangman.ViewModels
             ReplaceWithSelectedAlphabets(data.Alphabet.ToLower());
             if (_colorHangman >= 10 && !WordGuessed)
             {
+                DisplayMessage = true;
+                Message = "His ghost will haunt you now xD";
+                MessageColor = Color.FromHex("#b52f2f");
                 CurrentWord = WordToBeGuessed;
                 NextButtonVisibility = true;
             }
@@ -85,6 +92,7 @@ namespace Hangman.ViewModels
             _colorHangman = 1;
             NextButtonVisibility = false;
             WordGuessed = false;
+            DisplayMessage = false;
             _selectedAlphabets.Clear();
             GetAlphabetList();
             GetTheWordToBeGuessed();
@@ -150,7 +158,7 @@ namespace Hangman.ViewModels
 
         private void GetTheWordToBeGuessed()
         {
-            randomWord:
+        randomWord:
             var randIndex = new Random().Next(WordList.Count);
             WordToBeGuessed = WordList[randIndex];
             CurrentWord = "";
@@ -218,6 +226,9 @@ namespace Hangman.ViewModels
             SuccessHangmanColor();
             NextButtonVisibility = true;
             WordGuessed = true;
+            DisplayMessage = true;
+            Message = "YAYYY!!. You saved the guy.";
+            MessageColor = Color.FromHex("#70cf8a");
         }
 
         private void ColorHangman(int count)

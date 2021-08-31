@@ -15,27 +15,36 @@
                 <!--rope-->
                 <BoxView BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="170,0,10,40"/>
 
-                <!--head-->
-                <Ellipse x:Name="head" Stroke="#d7dbf5" StrokeThickness="8" HeightRequest="70" WidthRequest="70"
-                         AbsoluteLayout.LayoutBounds="1.27,0.13" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <StackLayout x:Name="hangman" AbsoluteLayout.LayoutBounds="1.27,0.3" AbsoluteLayout.LayoutFlags="PositionProportional"
+                             Spacing="0">
 
-                <!--body-->
-                <BoxView x:Name="body" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="170,100,10,100"/>
+                    <!--head-->
+                    <Ellipse Stroke="#d7dbf5" StrokeThickness="8" HeightRequest="70" WidthRequest="70"
+                             AbsoluteLayout.LayoutBounds="1.27,0.13" AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-                <!--hands-->
-                <BoxView x:Name="leftHand" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.90,0.45,10,50"
-                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="45"/>
+                    <!--body-->
+                    <BoxView BackgroundColor="#d7dbf5" HeightRequest="100" WidthRequest="8"
+                             HorizontalOptions="CenterAndExpand"/>
 
-                <BoxView x:Name="rightHand" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="1.1,0.45,10,50"
-                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="-45"/>
+                    <!--hands-->
+                    <BoxView BackgroundColor="#d7dbf5" Rotation="45"
+                             HorizontalOptions="CenterAndExpand" HeightRequest="8" WidthRequest="50"
+                             TranslationY="-55" TranslationX="20"/>
 
-                <!--legs-->
-                <BoxView x:Name="leftLeg" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.90,0.7,10,50"
-                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="45"/>
+                    <BoxView BackgroundColor="#d7dbf5" Rotation="-45"
+                             HorizontalOptions="CenterAndExpand" HeightRequest="8" WidthRequest="50"
+                             TranslationY="-60" TranslationX="-20"/>
 
-                <BoxView x:Name="rightLeg" BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="1.1,0.7,10,50"
-                         AbsoluteLayout.LayoutFlags="PositionProportional" Rotation="-45"/>
+                    <!--legs-->
+                    <BoxView BackgroundColor="#d7dbf5" Rotation="45"
+                             HorizontalOptions="CenterAndExpand" HeightRequest="8" WidthRequest="50"
+                             TranslationY="-5" TranslationX="20"/>
 
+                    <BoxView BackgroundColor="#d7dbf5" Rotation="-45"
+                             HorizontalOptions="CenterAndExpand" HeightRequest="8" WidthRequest="50"
+                             TranslationY="-12" TranslationX="-20"/>
+
+                </StackLayout>
                 <!--main pole-->
                 <BoxView BackgroundColor="#d7dbf5" AbsoluteLayout.LayoutBounds="0.5,1,10,320"
                          AbsoluteLayout.LayoutFlags="PositionProportional"/>
@@ -47,7 +56,8 @@
 
             <Frame x:Name="entryFrame" Grid.Row="1" Padding="2">
                 <Entry x:Name="userNameEntry" Placeholder="YOUR NAME" HorizontalTextAlignment="Center"
-                       TextColor="#092850" FontAttributes="Bold" TextChanged="userNameEntry_TextChanged"/>
+                       TextColor="#092850" FontAttributes="Bold" TextChanged="userNameEntry_TextChanged"
+                       ReturnType="Next"/>
             </Frame>
 
 

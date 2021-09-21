@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Hangman.Model;
+using Hangman.Views;
 using Newtonsoft.Json;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -98,6 +99,13 @@ namespace Hangman.ViewModels
             GetTheWordToBeGuessed();
             ResetHangmanColors();
         });
+
+        public AsyncCommand WordInfoCommand => new(async () =>
+         {
+             //await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new WordInformationPage(WordToBeGuessed)));
+         }, allowsMultipleExecutions: false);
+
+
         #endregion
 
         public GamePageVM(string username)

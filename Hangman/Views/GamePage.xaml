@@ -7,7 +7,9 @@
     x:DataType="viewmodel:GamePageVM"
     xmlns:hangman="clr-namespace:Hangman.Views"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Name="this"
+    NavigationPage.HasNavigationBar="False"
     x:Class="Hangman.Views.GamePage">
     <ContentPage.Content>
         <Grid RowDefinitions="70,*" Padding="15,0" BackgroundColor="AliceBlue">
@@ -31,9 +33,20 @@
                     <hangman:HangmanTemplate/>
 
                     <StackLayout>
-                                                
-                        <Label Text="{Binding CurrentWord, Converter={xct:TextCaseConverter Type=Upper}}" HorizontalTextAlignment="Center" FontSize="Large"
-                               Margin="0,15"/>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+
+                            <Label Text="{Binding CurrentWord, Converter={xct:TextCaseConverter Type=Upper}}" HorizontalTextAlignment="Center"
+                                   FontSize="Large" Margin="0,15"/>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://Hangman.Resources.info.svg" HeightRequest="20" WidthRequest="20"
+                                                              IsVisible="{Binding NextButtonVisibility}">
+                                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding WordInfoCommand}"/>
+                                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                            </ffimageloadingsvg:SvgCachedImage>
+
+                        </StackLayout>
+
 
                         <FlexLayout Direction="Row" JustifyContent="Start" AlignContent="Start" Wrap="Wrap" AlignItems="Start"                                    
                                     BindableLayout.ItemsSource="{Binding AlphabetList}">

@@ -19,7 +19,7 @@ namespace Hangman
             }
             else
             {
-                MainPage = new GamePage(username);
+                MainPage = new NavigationPage(new GamePage(username));
             }
         }
 

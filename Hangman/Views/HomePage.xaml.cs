@@ -37,7 +37,7 @@ namespace Hangman.Views
             }
 
             Preferences.Set(PreferenceKeys.UserName, userNameEntry.Text.Trim());
-            App.Current.MainPage = new GamePage(userNameEntry.Text.Trim());
+            App.Current.MainPage = new Xamarin.Forms.NavigationPage(new GamePage(userNameEntry.Text.Trim()));
         }
 
         private void ShakeAnimation()

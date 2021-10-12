@@ -7,9 +7,6 @@ namespace Hangman.ViewModels
 {
     public class WordInformationVM : ObservableObject
     {
-        //private string word;
-
-        //public string Word { get => word; set => SetProperty(ref word, value); }
         public string Word { get; set; }
 
         public WordInformationVM(string word)

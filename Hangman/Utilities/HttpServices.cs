@@ -13,7 +13,7 @@ namespace Hangman.Utilities
                 string serviceResult = "";
                 using (var http = new HttpClient())
                 {
-                    var BaseAddress = new Uri($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
+                    var BaseAddress = new Uri($"{Constants.BaseUrl}{word}");
                     using (HttpResponseMessage response = await http.GetAsync(BaseAddress))
                     {
                         if (response.IsSuccessStatusCode)

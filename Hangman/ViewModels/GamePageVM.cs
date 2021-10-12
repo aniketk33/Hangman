@@ -102,7 +102,7 @@ namespace Hangman.ViewModels
 
         public AsyncCommand WordInfoCommand => new(async () =>
          {
-             await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new WordInformationPage(WordToBeGuessed)));
+             //await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new WordInformationPage(WordToBeGuessed)));
          }, allowsMultipleExecutions: false);
 
 

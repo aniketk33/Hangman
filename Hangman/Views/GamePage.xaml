@@ -22,7 +22,7 @@
 
                 <StackLayout Spacing="25">
 
-                    <Button Text="NEXT WORD" FontSize="Large" BackgroundColor="AliceBlue" BorderColor="#092850"
+                    <Button Text="NEW WORD" FontSize="Large" BackgroundColor="AliceBlue" BorderColor="#092850"
                             TextColor="#092850" BorderWidth="1" IsVisible="{Binding NextButtonVisibility}"
                             Command="{Binding RefreshWordCommand}" CornerRadius="5" VerticalOptions="EndAndExpand"
                             Margin="0,5"/>

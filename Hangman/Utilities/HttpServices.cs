@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace Hangman.Utilities
 {
     public class HttpServices
     {
-        public async Task<string> GetWordMeaning(string word)
+        public async Task<(string,HttpStatusCode)> GetWordMeaning(string word)
         {
             try
             {
@@ -19,19 +20,18 @@ namespace Hangman.Utilities
                         if (response.IsSuccessStatusCode)
                         {
                             serviceResult = await response.Content.ReadAsStringAsync();
+                            return (serviceResult, response.StatusCode);
                         }
                         else
                         {
-                            serviceResult = "failure";
+                            return (serviceResult, response.StatusCode);
                         }
                     }
                 }
-
-                return serviceResult;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return "failure";
+                return ("", HttpStatusCode.BadRequest);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Hangman.Utilities;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -18,10 +19,24 @@ namespace Hangman.ViewModels
         {
             Task.Run(async() =>
             {
-                var result = await new HttpServices().GetWordMeaning(Word);
+                try
+                {
+                    var result = await new HttpServices().GetWordMeaning(Word);
+                    if (result.Item2 is not HttpStatusCode.OK)
+                        return;
+                    DesignUIWithServiceResult(result.Item1);
+                }
+                catch (Exception ex)
+                {
+
+                }
             });
         }
 
-        
+        private void DesignUIWithServiceResult(string result)
+        {
+            if (string.IsNullOrWhiteSpace(result))
+                return;            
+        }
     }
 }
